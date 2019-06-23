@@ -16,8 +16,8 @@ export class ApiService {
     reqValue: string = ``
   ): void {
     const apiQuery: string = `https://www.thecocktaildb.com/api/json/v1/1/${reqType}.php${
-      reqParam ? "?=" + reqParam : ""
-    }${reqValue ? "?=" + reqValue : ""}`;
+      reqParam ? "?" + reqParam + "=" : ""
+    }${reqValue ? reqValue : ""}`;
     this.data = null;
 
     console.info(apiQuery);

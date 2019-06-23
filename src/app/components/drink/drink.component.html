@@ -1,2 +1,4 @@
-<div *ngIf="!apiService.data?.drinks">Loading...</div>
+<div *ngIf="!apiService.data">Loading...</div>
+  <div *ngIf="apiService.data.drinks[0].name">Name: {{ apiService.data.drinks[0].name}}</div>
+  <div *ngIf="apiService.data.drinks[0].category">Category: {{ apiService.data.drinks[0].category}}</div>
   <div *ngIf="apiService.data.drinks">abc : {{ apiService.data.drinks[0].strDrink }}</div>

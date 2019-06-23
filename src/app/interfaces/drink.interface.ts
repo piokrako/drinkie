@@ -2,7 +2,7 @@ import { Ingredients } from "./ingridients.interface";
 
 export interface Drink {
   id: string; // idDrink
-  strDrink: string; // strDrink
+  name: string; // strDrink
   category: string; // strCategory"
   alcoholic: string; // strAlcoholic
   glass: string; // strGlass
