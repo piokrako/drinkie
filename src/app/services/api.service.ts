@@ -27,8 +27,24 @@ export class ApiService {
       .get(apiQuery)
       .toPromise()
       .then((json: Drinks) => {
-        this.data = json;
+
+        json.drinks.forEach(drink => {
+          for(let i = 1; i <=15 ; i++) {
+            const key = `strIngredient${i}`;
+            if (drink[key] === null || drink[key].trim() === '') {
+              delete drink[key];
+            }
+
+            const keyMeasure = `strMeasure${i}`;
+            if (drink[keyMeasure] === null || drink[keyMeasure].trim() === '') {
+              delete drink[keyMeasure];
+            }
+          }
+        });
+
         console.info({ json });
+        this.data = json;
+
       })
       .catch(err => {
         console.warn(err);

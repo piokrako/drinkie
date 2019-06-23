@@ -11,13 +11,19 @@ export class CategoriesComponent implements OnInit {
   apiService: ApiService;
   activatedRoute: ActivatedRoute;
 
-  type: string = `list`;
-  param: string = `c`;
-  value: string = `list`;
+  type: string;
+  param: string;
+  value: string;
 
   constructor(apiService: ApiService, activatedRoute: ActivatedRoute) {
     this.apiService = apiService;
     this.activatedRoute = activatedRoute;
+    activatedRoute.queryParams.subscribe(queryParams => {
+      console.warn({queryParams});
+      this.type = queryParams.type;
+      this.param = queryParams.param;
+      this.value = queryParams.value;
+    });
   }
 
   ngOnInit() {

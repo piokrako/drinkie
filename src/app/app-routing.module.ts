@@ -5,12 +5,12 @@ import { CategoriesComponent } from './components/categories/categories.componen
 
 const routes: Routes = [
   {
-    path: ':type',
-    component: RandomComponent
+    path: 'categories',
+    component: CategoriesComponent
   },
   {
-    path: 'list/c/list',
-    component: CategoriesComponent
+    path: ':type',
+    component: RandomComponent
   },
   {
     path: '**',
@@ -19,7 +19,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
