@@ -13,6 +13,6 @@ export class DrinkComponent {
     this.apiService = apiService;
   }
   ngOnInit() {
-    console.warn(this.type);
+    console.info(this.type);
   }
 }

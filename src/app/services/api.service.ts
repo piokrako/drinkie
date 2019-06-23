@@ -11,22 +11,40 @@ export class ApiService {
   constructor(public httpClient: HttpClient) {}
 
   public fetchData(
-    reqType: string = `search`,
-    reqParam: string = ``,
-    reqValue: string = ``
+    reqType: string,
+    reqParam?: string,
+    reqValue?: string
   ): void {
+    
+    this.data = null;
+    
     const apiQuery: string = `https://www.thecocktaildb.com/api/json/v1/1/${reqType}.php${
       reqParam ? "?" + reqParam + "=" : ""
     }${reqValue ? reqValue : ""}`;
-    this.data = null;
+    console.warn(apiQuery);
 
-    console.info(apiQuery);
     this.httpClient
       .get(apiQuery)
       .toPromise()
       .then((json: Drinks) => {
-        this.data = json;
+
+        json.drinks.forEach(drink => {
+          for(let i = 1; i <=15 ; i++) {
+            const key = `strIngredient${i}`;
+            if (drink[key] === null || drink[key].trim() === '') {
+              delete drink[key];
+            }
+
+            const keyMeasure = `strMeasure${i}`;
+            if (drink[keyMeasure] === null || drink[keyMeasure].trim() === '') {
+              delete drink[keyMeasure];
+            }
+          }
+        });
+
         console.info({ json });
+        this.data = json;
+
       })
       .catch(err => {
         console.warn(err);

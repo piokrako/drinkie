@@ -8,12 +8,16 @@ import { ApiService } from './services/api.service';
 import { AppComponent } from './app.component';
 import { RandomComponent } from './components/random/random.component';
 import { DrinkComponent } from './components/drink/drink.component';
+import { ListComponent } from './components/list/list.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RandomComponent,
-    DrinkComponent
+    DrinkComponent,
+    ListComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
