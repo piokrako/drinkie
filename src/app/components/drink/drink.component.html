@@ -1,0 +1,2 @@
+<div *ngIf="!apiService.data?.drinks">Loading...</div>
+  <div *ngIf="apiService.data.drinks">abc : {{ apiService.data.drinks[0].strDrink }}</div>
