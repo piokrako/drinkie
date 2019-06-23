@@ -1,0 +1,8 @@
+<div *ngIf="!apiService.data">Loading...</div>
+
+<div *ngIf="apiService.data">
+  <h1>Categories</h1>
+  <ul>
+    <li *ngFor="let item of apiService.data.drinks">{{ item.strCategory }}</li>
+  </ul>
+</div>

@@ -11,16 +11,18 @@ export class ApiService {
   constructor(public httpClient: HttpClient) {}
 
   public fetchData(
-    reqType: string = `search`,
-    reqParam: string = ``,
-    reqValue: string = ``
+    reqType: string,
+    reqParam?: string,
+    reqValue?: string
   ): void {
+    
+    this.data = null;
+    
     const apiQuery: string = `https://www.thecocktaildb.com/api/json/v1/1/${reqType}.php${
       reqParam ? "?" + reqParam + "=" : ""
     }${reqValue ? reqValue : ""}`;
-    this.data = null;
+    console.warn(apiQuery);
 
-    console.info(apiQuery);
     this.httpClient
       .get(apiQuery)
       .toPromise()
