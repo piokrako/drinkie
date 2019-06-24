@@ -1,15 +1,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Drinks } from "../interfaces/drinks.interface";
-import { Ingredients } from "../interfaces/ingridients.interface";
-import { Ingredient } from "../interfaces/ingridient.interface";
-
 @Injectable()
 export class ApiService {
   public ingredients: Array<string> = [];
   public data: Drinks;
   public pages: Array<number> = [];
   type: string;
+  pageName?: string;
 
   constructor(public httpClient: HttpClient) {}
 
@@ -23,13 +21,13 @@ export class ApiService {
     const apiQuery: string = `https://www.thecocktaildb.com/api/json/v1/1/${reqType}.php${
       reqParam ? "?" + reqParam + "=" : ""
     }${reqValue ? reqValue : ""}`;
-    console.warn(apiQuery);
+    console.warn("API: "+ apiQuery);
 
     this.httpClient
       .get(apiQuery)
       .toPromise()
       .then((json: Drinks) => {
-        if (reqType != `list`) {
+        if (reqType === `random` || reqType === `search`) {
           json.drinks.forEach(drink => {
             for (let i = 1; i <= 15; i++) {
               const keyIngredient = `strIngredient${i}`;
@@ -52,7 +50,7 @@ export class ApiService {
 
               if (drink[keyMeasure] && drink[keyIngredient]) {
                 this.ingredients.push(
-                  drink[keyIngredient] + " (" + drink[keyMeasure] + ")"
+                  drink[keyMeasure].replace(/\s+$/, '') + " " + drink[keyIngredient]
                 );
               }
             }

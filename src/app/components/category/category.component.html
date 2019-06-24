@@ -1,0 +1,8 @@
+<div *ngIf="!apiService.data">Loading...</div>
+
+<div *ngIf="apiService.data">
+  <h1>{{this.value}}</h1>
+  <ul>
+    <li *ngFor="let item of apiService.data.drinks" routerLink="/drink" [queryParams]="{ name: item.strDrink}"><img src="{{ item.strDrinkThumb }}" alt=" {{ item.strDrink }} - thumbnail">{{ item.strDrink}}</li>
+  </ul>
+</div>

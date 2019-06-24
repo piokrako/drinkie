@@ -10,8 +10,9 @@ import { RandomComponent } from './components/random/random.component';
 import { DrinkComponent } from './components/drink/drink.component';
 import { ListComponent } from './components/list/list.component';
 import { CategoriesComponent } from './components/categories/categories.component';
-import { IndexComponent } from './index/index.component';
-import { SearchComponent } from './search/search.component';
+import { IndexComponent } from './components/index/index.component';
+import { SearchComponent } from './components/search/search.component';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SearchComponent } from './search/search.component';
     ListComponent,
     CategoriesComponent,
     IndexComponent,
-    SearchComponent
+    SearchComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

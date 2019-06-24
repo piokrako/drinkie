@@ -1,1 +1,8 @@
-<app-list [type]="type" [param]="param" [value]="value"></app-list>
+<div *ngIf="!apiService.data">Loading...</div>
+
+<div *ngIf="apiService.data">
+  <h1>Categories</h1>
+  <ul>
+    <li *ngFor="let item of apiService.data.drinks" routerLink="/category" [queryParams]="{ name: item.strCategory}">{{ item.strCategory }}</li>
+  </ul>
+</div>
