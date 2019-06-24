@@ -2,8 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RandomComponent } from './components/random/random.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { IndexComponent } from './index/index.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: IndexComponent
+  },
   {
     path: 'categories',
     component: CategoriesComponent
