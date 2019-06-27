@@ -1,4 +1,6 @@
-<div *ngIf="!apiService.data">Loading...</div>
+<div *ngIf="!apiService.data" style="display:flex; justify-content: center; align-items: center;">
+  <app-loader></app-loader>
+</div>
 
 <div *ngIf="apiService.data">
   <h1>Categories</h1>

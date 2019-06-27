@@ -13,6 +13,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { IndexComponent } from './components/index/index.component';
 import { SearchComponent } from './components/search/search.component';
 import { CategoryComponent } from './components/category/category.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CategoryComponent } from './components/category/category.component';
     CategoriesComponent,
     IndexComponent,
     SearchComponent,
-    CategoryComponent
+    CategoryComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

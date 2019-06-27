@@ -47,7 +47,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/normalize-scss/sass/_normalize.scss",
+              "node_modules/flexboxgrid-sass/flexboxgrid.scss"
             ],
             "scripts": []
           },

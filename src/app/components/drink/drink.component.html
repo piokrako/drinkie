@@ -1,32 +1,51 @@
-<div *ngIf="!apiService.data?.drinks">Loading...</div>
-<div *ngIf="(apiService.data?.drinks)[0] as value">
-  <!-- <div *ngFor="let element of apiService.data.drinks[i] ; index as i"> {{ element }} </div> -->
-  <h1 *ngIf="value.strDrink">
+<div
+  *ngIf="!apiService.data?.drinks"
+  style="display:flex; justify-content: center; align-items: center;"
+>
+  <app-loader></app-loader>
+</div>
+
+<div *ngIf="(apiService.data?.drinks)[0] as value" class="row">
+  <h1 *ngIf="value.strDrink" class="col-xs-12">
     {{ value.strDrink }}
   </h1>
-  <h3 *ngIf="value.strCategory">
-    {{ value.strCategory }}
-  </h3>
-  <p *ngIf="value.strAlcoholic != ''">
-    {{ value.strAlcoholic }}
-  </p>
-  <p *ngIf="value.strGlass != ''">
-    {{ value.strGlass }}
-  </p>
-  <p *ngIf="value.strInstructions != ''">
-    {{ value.strInstructions }}
-  </p>
-  <img
-    *ngIf="value.strDrinkThumb != ''"
-    src="{{ value.strDrinkThumb }}"
-    alt="{{ value.strDrink }} - thumbnail"
-  />
-  <div>
+  <div
+    class="col-xs-12
+  col-sm-6
+  col-md-6
+  col-lg-6"
+  >
+    <h3 *ngIf="value.strCategory">
+      {{ value.strCategory }}
+    </h3>
+    <p *ngIf="value.strAlcoholic != ''">
+      {{ value.strAlcoholic }}
+    </p>
+    <p *ngIf="value.strGlass != ''">
+      {{ value.strGlass }}
+    </p>
+    <p *ngIf="value.strInstructions != ''">
+      {{ value.strInstructions }}
+    </p>
+
     <h3>Ingridients</h3>
     <ul>
       <li *ngFor="let item of apiService.ingredients">
         <span>{{ item }}</span>
       </li>
     </ul>
+  </div>
+  <div
+    class="drk-drink__blop col-xs-12
+col-sm-6
+col-md-6
+col-lg-6"
+  >
+    <img
+      *ngIf="value.strDrinkThumb != ''"
+      src="{{ value.strDrinkThumb }}"
+      alt="{{ value.strDrink }} - thumbnail"
+      class="drk-drink__image"
+    />
   </div>
 </div>
