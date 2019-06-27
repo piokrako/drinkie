@@ -1,0 +1,29 @@
+.drk-drink__blop {
+  @media only screen and (min-width: 61rem) {
+    position: absolute;
+    right: 0;
+  }
+}
+
+.drk-drink__image {
+  border-radius: 53% 47% 30% 70% / 35% 33% 67% 65% ;
+  animation: wobble 15s ease-in-out alternate infinite;
+}
+
+@keyframes wobble {
+  0% {
+    border-radius: 77% 23% 40% 60% / 61% 71% 29% 39% ;
+  }
+  25% {
+    border-radius: 19% 81% 75% 25% / 19% 57% 43% 81%;
+  }
+  50% {
+    border-radius: 53% 47% 30% 70% / 35% 33% 67% 65%;
+  }
+  75% {
+    border-radius:19% 81% 40% 60% / 29% 31% 69% 71%;
+  }
+  100% {
+    border-radius: 35% 65% 72% 28% / 68% 56% 44% 32%;
+  }
+}

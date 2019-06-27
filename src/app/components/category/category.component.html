@@ -1,0 +1,8 @@
+<div *ngIf="!apiService.data" style="display:flex; justify-content: center; align-items: center;"><app-loader></app-loader></div>
+
+<div *ngIf="apiService.data">
+  <h1>{{this.value}}</h1>
+  <ul class="drk-drink-list">
+    <li *ngFor="let item of apiService.data.drinks" class="drk-drink-list__item" routerLink="/drink" [queryParams]="{ name: item.strDrink}">{{ item.strDrink}}</li>
+  </ul>
+</div>

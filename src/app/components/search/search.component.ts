@@ -1,17 +1,17 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from "src/app/services/api.service";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: "app-categories",
-  templateUrl: "./categories.component.html",
-  styleUrls: ["./categories.component.scss"]
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss']
 })
-export class CategoriesComponent implements OnInit {
+export class SearchComponent implements OnInit {
   apiService: ApiService;
   activatedRoute: ActivatedRoute;
 
-  type: string;
+  @Input() type: string;
   param: string;
   value: string;
 
@@ -19,13 +19,14 @@ export class CategoriesComponent implements OnInit {
     this.apiService = apiService;
     this.activatedRoute = activatedRoute;
     activatedRoute.queryParams.subscribe(queryParams => {
-      this.type = queryParams.type;
-      this.param = queryParams.param;
-      this.value = queryParams.value;
+      console.log("Search params: " + queryParams)
+      this.value = queryParams.name;
     });
   }
 
   ngOnInit() {
     this.apiService.fetchData(this.type, this.param, this.value);
+
   }
+
 }

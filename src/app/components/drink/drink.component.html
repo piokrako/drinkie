@@ -1,189 +1,51 @@
-<div *ngIf="!apiService.data?.drinks">Loading...</div>
-<div *ngIf="apiService.data?.drinks[0] as value">
-  <!-- <div *ngFor="let element of apiService.data.drinks[i] ; index as i"> {{ element }} </div> -->
-  <h1 *ngIf="value.strDrink">
+<div
+  *ngIf="!apiService.data?.drinks"
+  style="display:flex; justify-content: center; align-items: center;"
+>
+  <app-loader></app-loader>
+</div>
+
+<div *ngIf="(apiService.data?.drinks)[0] as value" class="row">
+  <h1 *ngIf="value.strDrink" class="col-xs-12">
     {{ value.strDrink }}
   </h1>
-  <h3 *ngIf="apiService.data.drinks[0].strCategory">
-    {{ apiService.data.drinks[0].strCategory }}
-  </h3>
-  <p *ngIf="apiService.data.drinks[0].strAlcoholic != ''">
-    {{ apiService.data.drinks[0].strAlcoholic }}
-  </p>
-  <p *ngIf="apiService.data.drinks[0].strGlass != ''">
-    {{ apiService.data.drinks[0].strGlass }}
-  </p>
-  <p *ngIf="apiService.data.drinks[0].strInstructions != ''">
-    {{ apiService.data.drinks[0].strInstructions }}
-  </p>
-  <img
-    *ngIf="apiService.data.drinks[0].strDrinkThumb != ''"
-    src="{{ apiService.data.drinks[0].strDrinkThumb }}"
-    alt="{{ apiService.data.drinks[0].strDrink }} - thumbnail"
-  />
-  <div *ngIf="apiService.data.drinks[0].strIngriedient1 != ''">
+  <div
+    class="col-xs-12
+  col-sm-6
+  col-md-6
+  col-lg-6"
+  >
+    <h3 *ngIf="value.strCategory">
+      {{ value.strCategory }}
+    </h3>
+    <p *ngIf="value.strAlcoholic != ''">
+      {{ value.strAlcoholic }}
+    </p>
+    <p *ngIf="value.strGlass != ''">
+      {{ value.strGlass }}
+    </p>
+    <p *ngIf="value.strInstructions != ''">
+      {{ value.strInstructions }}
+    </p>
+
     <h3>Ingridients</h3>
     <ul>
-      <li *ngIf="apiService.data.drinks[0].strIngredient1 != ''">
-        <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure1 &&
-            apiService.data.drinks[0].strMeasure15 != '↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure1 }}</span
-        >{{ apiService.data.drinks[0].strIngredient1
-        }}
-      </li>
-      <li *ngIf="apiService.data.drinks[0].strIngredient2 != ''">
-       <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure2 &&
-            apiService.data.drinks[0].strMeasure15 != '↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure2 }}</span
-        > {{ apiService.data.drinks[0].strIngredient2
-        }}
-      </li>
-      <li *ngIf="apiService.data.drinks[0].strIngredient3 != ''">
-        <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure3 &&
-            apiService.data.drinks[0].strMeasure15 != '↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure3 }}</span
-        >{{ apiService.data.drinks[0].strIngredient3
-        }}
-      </li>
-      <li *ngIf="apiService.data.drinks[0].strIngredient4 != ''">
-        <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure4 &&
-            apiService.data.drinks[0].strMeasure15 != '↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure4 }}</span
-        >{{ apiService.data.drinks[0].strIngredient4
-        }}
-      </li>
-      <li *ngIf="apiService.data.drinks[0].strIngredient5 != ''">
-        <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure5 &&
-            apiService.data.drinks[0].strMeasure15 != '↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure5 }}</span
-        >{{ apiService.data.drinks[0].strIngredient5
-        }}
-      </li>
-      <li *ngIf="apiService.data.drinks[0].strIngredient6 != ''">
-        <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure6  != '' &&
-            apiService.data.drinks[0].strMeasure6 != null &&
-            apiService.data.drinks[0].strMeasure6 != '↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure6 }}</span
-        >{{ apiService.data.drinks[0].strIngredient6
-        }}
-      </li>
-      <li *ngIf="apiService.data.drinks[0].strIngredient7 != ''">
-        <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure7 != '' &&
-            apiService.data.drinks[0].strMeasure7 != null &&
-            apiService.data.drinks[0].strMeasure7 != '\↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure7 }}</span
-        >{{ apiService.data.drinks[0].strIngredient7
-        }}
-      </li>
-      <li *ngIf="apiService.data.drinks[0].strIngredient8 != ''">
-        <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure8 != '' &&
-            apiService.data.drinks[0].strMeasure8 != null &&
-            apiService.data.drinks[0].strMeasure8 != '↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure8 }}</span
-        >{{ apiService.data.drinks[0].strIngredient8
-        }}
-      </li>
-      <li *ngIf="apiService.data.drinks[0].strIngredient9 != ''">
-        <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure9  != '' &&
-            apiService.data.drinks[0].strMeasure9 != null &&
-            apiService.data.drinks[0].strMeasure9 != '↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure9 }}</span
-        >{{ apiService.data.drinks[0].strIngredient9
-        }}
-      </li>
-      <li *ngIf="apiService.data.drinks[0].strIngredient10 != ''">
-        <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure10  != '' &&
-            apiService.data.drinks[0].strMeasure10 != null &&
-            apiService.data.drinks[0].strMeasure10 != '↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure10 }}</span
-        >{{ apiService.data.drinks[0].strIngredient10
-        }}
-      </li>
-      <li *ngIf="apiService.data.drinks[0].strIngredient11 != ''">
-        <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure11 != '' &&
-            apiService.data.drinks[0].strMeasure11 != null &&
-            apiService.data.drinks[0].strMeasure11 != '↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure11 }}</span
-        >{{ apiService.data.drinks[0].strIngredient11
-        }}
-      </li>
-      <li *ngIf="apiService.data.drinks[0].strIngredient12 != ''">
-        <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure12 != '' &&
-            apiService.data.drinks[0].strMeasure12 != null &&
-            apiService.data.drinks[0].strMeasure12 != '↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure12 }}</span
-        >{{ apiService.data.drinks[0].strIngredient12
-        }}
-      </li>
-      <li *ngIf="apiService.data.drinks[0].strIngredient13 != ''">
-        <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure13 != '' &&
-            apiService.data.drinks[0].strMeasure13 != null &&
-            apiService.data.drinks[0].strMeasure13 != '↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure13 }}</span
-        >{{ apiService.data.drinks[0].strIngredient13
-        }}
-      </li>
-      <li *ngIf="apiService.data.drinks[0].strIngredient14 != ''">
-        <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure14 != '' &&
-            apiService.data.drinks[0].strMeasure14 != null &&
-            apiService.data.drinks[0].strMeasure14 != '↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure14 }}</span
-        >{{ apiService.data.drinks[0].strIngredient14
-        }}
-      </li>
-      <li *ngIf="apiService.data.drinks[0].strIngredient15 != ''">
-       <span
-          *ngIf="
-            apiService.data.drinks[0].strMeasure15 != '' &&
-            apiService.data.drinks[0].strMeasure15 != null &&
-            apiService.data.drinks[0].strMeasure15 != '↵'
-          "
-        >{{ apiService.data.drinks[0].strMeasure15 }}</span
-        > {{ apiService.data.drinks[0].strIngredient15
-        }}
+      <li *ngFor="let item of apiService.ingredients">
+        <span>{{ item }}</span>
       </li>
     </ul>
+  </div>
+  <div
+    class="drk-drink__blop col-xs-12
+col-sm-6
+col-md-6
+col-lg-6"
+  >
+    <img
+      *ngIf="value.strDrinkThumb != ''"
+      src="{{ value.strDrinkThumb }}"
+      alt="{{ value.strDrink }} - thumbnail"
+      class="drk-drink__image"
+    />
   </div>
 </div>

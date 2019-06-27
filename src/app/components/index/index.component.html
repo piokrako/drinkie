@@ -1,0 +1,41 @@
+<div class="row">
+  <div
+    class="col-xs-12
+              col-sm-12
+              col-md-6
+              col-lg-6"
+  >
+    <h1>Hello, it's Drinkie!</h1>
+    <p>
+      Your source of knowlage about bevreage. You can search for your favourite
+      drink recepie or pick allow me to pick something randomly for You.
+    </p>
+
+    <div class="drk-search">
+      <input
+        type="text"
+        placeholder="eg.White Russian"
+        class="drk-search__input"
+      />
+      <div class="drk-search__input--append">
+         <button
+        class="drk-search__button"
+        routerLink="/search"
+        [queryParams]="{ type: 'search', param: 's' }"
+      >
+      <svg xmlns="http://www.w3.org/2000/svg" class="drk-search__button-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+        </div>
+     
+    </div>
+  </div>
+
+  <div
+    class="col-xs-12
+              col-sm-12
+              col-md-6
+              col-lg-6"
+  >
+  
+  </div>
+</div>

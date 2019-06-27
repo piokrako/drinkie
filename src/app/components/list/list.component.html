@@ -1,8 +1,10 @@
-<div *ngIf="!apiService.data">Loading...</div>
+<div *ngIf="!apiService.data" style="display:flex; justify-content: center; align-items: center;"><app-loader></app-loader></div>
 
 <div *ngIf="apiService.data">
-  <h1>Categories</h1>
-  <ul>
-    <li *ngFor="let item of apiService.data.drinks">{{ item.strCategory }}</li>
+  <h1>I think you might be looking for...</h1>
+  <ul *ngIf="apiService.data.drinks != null">
+    <li *ngFor="let item of apiService.data.drinks"><img src="{{ item.strDrinkThumb }}" alt=" {{ item.strDrink }} - thumbnail">{{ item.strDrink}}</li>
   </ul>
+  <h3 *ngIf="apiService.data.drinks === null">Oppps... My friend, chill for while, take a few deep breaths and try again.</h3>
+  <p *ngIf="apiService.data.drinks === null">You have a typo or I don't know about that drink.</p>
 </div>

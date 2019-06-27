@@ -1,0 +1,11 @@
+.drk-drink-list {
+  &__item {
+    transition: color 0.3s cubic-bezier(0.61, 0, 0.405, 1.63);
+    &:hover,
+    &:focus {
+      outline: none;
+      color: #002bff;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+.drk-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.drk-header {
+  margin-top: 40px;
+  margin-bottom: 80px;
+  .drk-logo {
+    max-height: 80px;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .drk-nav {
+    display: flex;
+    margin: 0;
+    margin-left: auto;
+    padding: 0;
+    text-indent: 0;
+    list-style-type: none;
+    height: 100%;
+    &__item {
+      padding: 16px 24px;
+      position: relative;
+      &:focus {
+        outline: none;
+      }
+
+      &:after {
+        content: "";
+        $size: 8px;
+        width: $size;
+        height: $size;
+        background-color: #002bff;
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        margin-left: -$size/2;
+        border-radius: 50%;
+        transform: scale(0);
+        transition: transform 0.3s cubic-bezier(0.61, 0, 0.405, 1.63);
+      }
+
+      &--active:after {
+        transform: scale(1);
+      }
+
+      &:hover,
+      &--active {
+        color: #002bff;
+      }
+    }
+  }
+}
