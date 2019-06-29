@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -6,8 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
+  inputValue = '';
+  constructor(private router: Router) { 
 
-  constructor() { }
+
+
+  }
+
+  goSearch() {
+    this.router.navigate(['/search'], { queryParams: { type: 'search', param: 's', value: this.inputValue } });
+  }
 
   ngOnInit() {
   }

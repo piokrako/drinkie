@@ -19,6 +19,10 @@ const routes: Routes = [
     component: DrinkComponent
   },
   {
+    path: 'search',
+    component: ListComponent
+  },
+  {
     path: ':type',
     component: RandomComponent
   },
