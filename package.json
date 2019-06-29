@@ -8,8 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "now-build": "ng build --prod --output-path dist"
-  },
+    "now-build": "ng build --prod",
+    "now-start": "serve dist --single"
+    },
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.0.0",
