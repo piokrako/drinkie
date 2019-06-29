@@ -1,5 +1,6 @@
-import { Component, Input } from "@angular/core";
+import { Component } from "@angular/core";
 import { ApiService } from "./../../services/api.service";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-drink",
@@ -7,12 +8,26 @@ import { ApiService } from "./../../services/api.service";
   styleUrls: ["./drink.component.scss"]
 })
 export class DrinkComponent {
-  @Input() type: string;
   apiService: ApiService;
-  constructor(apiService: ApiService) {
+  activatedRoute: ActivatedRoute;
+
+  type: string;
+  param: string;
+  value: string;
+
+  constructor(apiService: ApiService, activatedRoute: ActivatedRoute) {
     this.apiService = apiService;
+    this.activatedRoute = activatedRoute;
+    activatedRoute.queryParams.subscribe(queryParams => {
+      this.type = queryParams.type;
+      this.param = queryParams.param;
+      this.value = queryParams.value.replace(/ /g,'_');
+    });
   }
+
   ngOnInit() {
-    console.info(this.type);
+    console.log('LIST COMPONENT: '+ this.type, this.param, this.value);
+    this.apiService.fetchData(this.type, this.param, this.value);
   }
+
 }

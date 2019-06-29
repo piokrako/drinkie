@@ -7,7 +7,10 @@ export class ApiService {
   public data: Drinks;
   public pages: Array<number> = [];
   type: string;
+  param: string;
+  value: string;
   pageName?: string;
+
 
   constructor(public httpClient: HttpClient) {}
 
@@ -17,6 +20,7 @@ export class ApiService {
     reqValue?: string
   ): void {
     this.data = null;
+    console.info("PRE: " + reqType, reqParam, reqValue);
 
     const apiQuery: string = `https://www.thecocktaildb.com/api/json/v1/1/${reqType}.php${
       reqParam ? "?" + reqParam + "=" : ""
@@ -27,8 +31,9 @@ export class ApiService {
       .get(apiQuery)
       .toPromise()
       .then((json: Drinks) => {
-        if (reqType === `random` || reqType === `search`) {
+        if (reqType === `random` || reqType === `search` || reqType === 'lookup') {
           json.drinks.forEach(drink => {
+            this.ingredients = [];
             for (let i = 1; i <= 15; i++) {
               const keyIngredient = `strIngredient${i}`;
               if (

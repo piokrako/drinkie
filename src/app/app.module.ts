@@ -9,11 +9,9 @@ import { AppComponent } from './app.component';
 import { RandomComponent } from './components/random/random.component';
 import { DrinkComponent } from './components/drink/drink.component';
 import { ListComponent } from './components/list/list.component';
-import { CategoriesComponent } from './components/categories/categories.component';
 import { IndexComponent } from './components/index/index.component';
-import { SearchComponent } from './components/search/search.component';
-import { CategoryComponent } from './components/category/category.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +19,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     RandomComponent,
     DrinkComponent,
     ListComponent,
-    CategoriesComponent,
     IndexComponent,
     SearchComponent,
-    CategoryComponent,
     LoaderComponent
   ],
   imports: [

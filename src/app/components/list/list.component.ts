@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from './../../services/api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -7,18 +8,32 @@ import { ApiService } from './../../services/api.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  @Input() type: string;
-  @Input() param: string;
-  @Input() value: string;
-
   apiService: ApiService;
+  activatedRoute: ActivatedRoute;
 
-  constructor(apiService: ApiService) {
+  type: string;
+  param: string;
+  value: string;
+  category?: string;
+
+  constructor(apiService: ApiService, activatedRoute: ActivatedRoute) {
     this.apiService = apiService;
+    this.activatedRoute = activatedRoute;
+    activatedRoute.queryParams.subscribe(queryParams => {
+      this.type = queryParams.type;
+      this.param = queryParams.param;
+      this.value = queryParams.value.replace(/ /g,'_');
+      this.category = queryParams.value;
+      console.log('In constructor: '+ this.type, this.param, this.value);
+      this.apiService.fetchData(this.type, this.param, this.value);
+    });
+
+
   }
 
   ngOnInit() {
-    console.info(this.type, this.param, this.value);
+    console.log('LIST COMPONENT: '+ this.type, this.param, this.value);
+    this.apiService.fetchData(this.type, this.param, this.value);
   }
 
 }
