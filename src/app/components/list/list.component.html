@@ -11,17 +11,20 @@
   <h1 *ngIf="this.type === 'list'">Categories</h1>
   <ul *ngIf="apiService.data.drinks != null">
     <li *ngFor="let item of apiService.data.drinks">
-      <a *ngIf="item.strDrink" routerLink="/drink"
+      <a *ngIf="item.strDrink && !item.strCategory " routerLink="/drink"
       [queryParams]="{ type: 'lookup', param: 'i', value: item.idDrink}" >{{ item.strDrink }}</a>
-      <a *ngIf="item.strCategory" routerLink="/categories"
+      <a *ngIf="!item.strDrink && item.strCategory" routerLink="/categories"
       [queryParams]="{ type: 'filter', param: 'c', value: item.strCategory }">{{ item.strCategory }}</a>
+      <a *ngIf="item.strDrink && item.strCategory " routerLink="/drink"
+      [queryParams]="{ type: 'lookup', param: 'i', value: item.idDrink}" >{{ item.strDrink }} - {{ item.strCategory }}</a>
     </li>
   </ul>
-  <h3 *ngIf="apiService.data.drinks === null">
+  <h3 *ngIf="!apiService.data.drinks">
     Oppps... My friend, chill for while, take a few deep breaths and try again.
   </h3>
-  <p *ngIf="apiService.data.drinks === null">
+  <p *ngIf="!apiService.data.drinks">
     You have a typo or I don't know about that drink.
   </p>
 </div>
+
 <router-outlet></router-outlet>

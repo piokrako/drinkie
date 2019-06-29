@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-  inputValue = '';
+  inputValue:string = '';
+  inputError:boolean = false;
   constructor(private router: Router) { 
 
 
@@ -15,7 +16,11 @@ export class IndexComponent implements OnInit {
   }
 
   goSearch() {
-    this.router.navigate(['/search'], { queryParams: { type: 'search', param: 's', value: this.inputValue } });
+    if (this.inputValue != '') {
+      this.router.navigate(['/search'], { queryParams: { type: 'search', param: 's', value: this.inputValue } });
+    } else {
+      this.inputError=true;
+    }
   }
 
   ngOnInit() {

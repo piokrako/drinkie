@@ -31,7 +31,7 @@ export class ApiService {
       .get(apiQuery)
       .toPromise()
       .then((json: Drinks) => {
-        if (reqType === `random` || reqType === `search` || reqType === 'lookup') {
+        if (reqType === `random` || reqType === 'lookup') {
           json.drinks.forEach(drink => {
             this.ingredients = [];
             for (let i = 1; i <= 15; i++) {
