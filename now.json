@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "my-new-app",
+  "name": "drinkie",
   "builds": [
     {
       "src": "package.json",
