@@ -7,6 +7,8 @@ export class ApiService {
   public data: Drinks;
   public pages: Array<number> = [];
   type: string;
+  param: string;
+  value: string;
   pageName?: string;
 
   constructor(public httpClient: HttpClient) {}
@@ -21,14 +23,14 @@ export class ApiService {
     const apiQuery: string = `https://www.thecocktaildb.com/api/json/v1/1/${reqType}.php${
       reqParam ? "?" + reqParam + "=" : ""
     }${reqValue ? reqValue : ""}`;
-    console.warn("API: "+ apiQuery);
 
     this.httpClient
       .get(apiQuery)
       .toPromise()
       .then((json: Drinks) => {
-        if (reqType === `random` || reqType === `search`) {
+        if (reqType === `random` || reqType === "lookup") {
           json.drinks.forEach(drink => {
+            this.ingredients = [];
             for (let i = 1; i <= 15; i++) {
               const keyIngredient = `strIngredient${i}`;
               if (
@@ -50,14 +52,14 @@ export class ApiService {
 
               if (drink[keyMeasure] && drink[keyIngredient]) {
                 this.ingredients.push(
-                  drink[keyMeasure].replace(/\s+$/, '') + " " + drink[keyIngredient]
+                  drink[keyMeasure].replace(/\s+$/, "") +
+                    " " +
+                    drink[keyIngredient]
                 );
               }
             }
           });
         }
-
-        console.info({ json });
         this.data = json;
       })
       .catch(err => {

@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RandomComponent } from './components/random/random.component';
-import { CategoriesComponent } from './components/categories/categories.component';
 import { IndexComponent } from './components/index/index.component';
-import { CategoryComponent } from './components/category/category.component';
-import { SearchComponent } from './components/search/search.component';
 import { ListComponent } from './components/list/list.component';
+import { DrinkComponent } from './components/drink/drink.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   {
@@ -14,23 +13,27 @@ const routes: Routes = [
   },
   {
     path: 'categories',
-    component: CategoriesComponent
-  },
-  {
-    path: 'category',
-    component: CategoryComponent
+    component: ListComponent
   },
   {
     path: 'drink',
-    component: SearchComponent
+    component: DrinkComponent
+  },
+  {
+    path: 'search',
+    component: ListComponent
   },
   {
     path: ':type',
     component: RandomComponent
   },
   {
-    path: 'search',
+    path: ':type',
     component: ListComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   },
   {
     path: '**',
@@ -39,7 +42,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: `reload`})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

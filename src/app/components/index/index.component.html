@@ -15,18 +15,21 @@
       <input
         type="text"
         placeholder="eg.White Russian"
-        class="drk-search__input"
+        [className]="this.inputError ? 'drk-search__input drk-search__input--error' : 'drk-search__input'"
+        [(ngModel)]="inputValue"
+        (keyup.enter)="goSearch()"
       />
       <div class="drk-search__input--append">
          <button
         class="drk-search__button"
-        routerLink="/search"
-        [queryParams]="{ type: 'search', param: 's' }"
+        (click)="goSearch()"
       >
-      <svg xmlns="http://www.w3.org/2000/svg" class="drk-search__button-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       </button>
         </div>
-     
+     <div *ngIf="this.inputError" class="drk-search__input-error">
+      :( empty field, mate...
+     </div>
     </div>
   </div>
 

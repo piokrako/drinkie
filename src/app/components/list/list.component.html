@@ -1,10 +1,31 @@
-<div *ngIf="!apiService.data" style="display:flex; justify-content: center; align-items: center;"><app-loader></app-loader></div>
+<div
+  *ngIf="!apiService.data"
+  style="display:flex; justify-content: center; align-items: center;"
+>
+  <app-loader></app-loader>
+</div>
 
 <div *ngIf="apiService.data">
-  <h1>I think you might be looking for...</h1>
+  <h1 *ngIf="this.type === 'search'">I think you might be looking for...</h1>
+  <h1 *ngIf="this.type === 'filter'">{{ this.category }}</h1>
+  <h1 *ngIf="this.type === 'list'">Categories</h1>
   <ul *ngIf="apiService.data.drinks != null">
-    <li *ngFor="let item of apiService.data.drinks"><img src="{{ item.strDrinkThumb }}" alt=" {{ item.strDrink }} - thumbnail">{{ item.strDrink}}</li>
+    <li *ngFor="let item of apiService.data.drinks">
+      <a *ngIf="item.strDrink && !item.strCategory " routerLink="/drink"
+      [queryParams]="{ type: 'lookup', param: 'i', value: item.idDrink}" >{{ item.strDrink }}</a>
+      <a *ngIf="!item.strDrink && item.strCategory" routerLink="/categories"
+      [queryParams]="{ type: 'filter', param: 'c', value: item.strCategory }">{{ item.strCategory }}</a>
+      <a *ngIf="item.strDrink && item.strCategory " routerLink="/drink"
+      [queryParams]="{ type: 'lookup', param: 'i', value: item.idDrink}" >{{ item.strDrink }} - {{ item.strCategory }}</a>
+    </li>
   </ul>
-  <h3 *ngIf="apiService.data.drinks === null">Oppps... My friend, chill for while, take a few deep breaths and try again.</h3>
-  <p *ngIf="apiService.data.drinks === null">You have a typo or I don't know about that drink.</p>
+  <h3 *ngIf="!apiService.data.drinks">
+    Oppps... My friend, chill for while, take a few deep breaths and try again.
+  </h3>
+  <p *ngIf="!apiService.data.drinks">
+    You have a typo or I know nothing about that drink.
+  </p>
+
 </div>
+
+<router-outlet></router-outlet>

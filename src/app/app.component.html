@@ -1,14 +1,17 @@
 <div class="drk-body wrapper container-fluid">
   <div class="drk-header row">
-    <img
+    <div  class="col-xs-12
+    col-sm-12
+    col-md-6
+    col-lg-6">
+<img
       src="../assets/img/logo.svg"
       alt="Drinkie - logotype"
-      class="drk-logo col-xs-12
-      col-sm-12
-      col-md-6
-      col-lg-6"
+      class="drk-logo"
       routerLink="/"
     />
+    </div>
+    
 
     <ul class="drk-nav col-xs-12
     col-sm-12
@@ -27,6 +30,13 @@
         routerLinkActive="drk-nav__item--active"
       >
         Categories
+      </li>
+      <li
+        class="drk-nav__item"
+        routerLink="/about"
+        routerLinkActive="drk-nav__item--active"
+      >
+        About
       </li>
     </ul>
   </div>
