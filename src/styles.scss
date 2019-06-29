@@ -1,8 +1,23 @@
+
+@font-face {
+  font-family: 'Product Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Product Sans Regular'), url('./assets/fonts/ProductSans-Regular.woff') format('woff');
+  }
+  
+  @font-face {
+    font-family: 'Product Sans Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Medium'), url('./assets/fonts/ProductSans-Medium.woff') format('woff');
+    }
+
 body {
   margin: 0px;
   font-family: "Product Sans";
   font-size: 22px;
-  color: rgba(0,0,0,.84);
+  color: #333333;
 
   &:before,
   &:after {
@@ -52,6 +67,10 @@ body {
   }
 }
 
+
+h1, h2, h3 {
+  font-family: "Product Sans Medium";
+}
 @keyframes morph {
   0% {
     border-radius: 40% 60% 60% 40% / 70% 30% 70% 30%;

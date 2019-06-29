@@ -11,6 +11,7 @@
     box-sizing: border-box;
     border: none;
     width: 100%;
+    max-height: 52px;
     transition: background-color 200ms ease-out;
    
     
@@ -42,5 +43,21 @@
     width: 52px;
     border-radius: 4px;
     border: none;
+    background-color:  rgb(27, 74, 251);
+    transition: background-color 200ms ease-out;
+    
+    &:focus{
+      outline: none;
+    }
+
+    &:hover {
+      background-color:  rgba(27, 74, 251, 0.65);
+    }
+
+
+    svg {
+      color: #fff;
+    }
+
   }
 }

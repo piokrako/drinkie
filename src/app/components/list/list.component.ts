@@ -24,15 +24,11 @@ export class ListComponent implements OnInit {
       this.param = queryParams.param;
       this.value = queryParams.value.replace(/ /g,'_');
       this.category = queryParams.value;
-      console.log('In constructor: '+ this.type, this.param, this.value);
       this.apiService.fetchData(this.type, this.param, this.value);
     });
-
-
   }
 
   ngOnInit() {
-    console.log('LIST COMPONENT: '+ this.type, this.param, this.value);
     this.apiService.fetchData(this.type, this.param, this.value);
   }
 
