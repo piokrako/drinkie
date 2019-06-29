@@ -24,16 +24,16 @@ const routes: Routes = [
     component: ListComponent
   },
   {
+    path: 'about',
+    component: AboutComponent
+  },
+  {
     path: ':type',
     component: RandomComponent
   },
   {
     path: ':type',
     component: ListComponent
-  },
-  {
-    path: 'about',
-    component: AboutComponent
   },
   {
     path: '**',
