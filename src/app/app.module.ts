@@ -11,6 +11,7 @@ import { DrinkComponent } from "./components/drink/drink.component";
 import { ListComponent } from "./components/list/list.component";
 import { IndexComponent } from "./components/index/index.component";
 import { LoaderComponent } from "./components/loader/loader.component";
+import { AboutComponent } from "./components/about/about.component";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LoaderComponent } from "./components/loader/loader.component";
     DrinkComponent,
     ListComponent,
     IndexComponent,
-    LoaderComponent
+    LoaderComponent,
+    AboutComponent
   ],
   imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
   providers: [ApiService],

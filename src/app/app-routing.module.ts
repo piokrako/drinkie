@@ -4,6 +4,7 @@ import { RandomComponent } from './components/random/random.component';
 import { IndexComponent } from './components/index/index.component';
 import { ListComponent } from './components/list/list.component';
 import { DrinkComponent } from './components/drink/drink.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: ':type',
     component: ListComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   },
   {
     path: '**',
